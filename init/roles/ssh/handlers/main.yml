@@ -1,0 +1,3 @@
+---
+- name: Restart SSH Server
+  command: "/etc/init.d/sshd restart"

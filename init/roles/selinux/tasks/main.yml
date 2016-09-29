@@ -1,0 +1,10 @@
+---
+- name: Test to see if selinux is running
+  command: /usr/sbin/getenforce
+  register: sestatus  
+  changed_when: false
+
+- name: Config Selinux 
+  lineinfile: dest=/etc/selinux/config regexp=^SELINUX=enforcing line=SELINUX=disabled
+  when: sestatus.stdout == "Enforcing"
+  #notify: restart the host

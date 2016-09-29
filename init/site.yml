@@ -1,0 +1,12 @@
+---
+- hosts: all
+  remote_user: www
+
+  roles:
+    - yum
+    - selinux
+    - iptables
+    - service
+    - security
+    - ssh
+    - crontab

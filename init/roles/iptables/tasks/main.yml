@@ -1,0 +1,6 @@
+---
+# Clean up the iptables rules for Centos/RHEL version 6
+- name: Clean Up The Iptables Rules
+  shell: /sbin/iptables -X && /sbin/iptables -Z && /sbin/iptables -F
+  when: "ansible_os_family == 'RedHat' and ansible_distribution_major_version == '6'"
+  notify: Save Iptables Rule

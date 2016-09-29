@@ -1,0 +1,4 @@
+---
+- name: Config file size and process size
+  template: src=limits.conf_6.j2 dest=/etc/security/limits.conf mode=0644 owner=root group=root
+  when: "ansible_os_family == 'RedHat' and ansible_distribution_major_version == '6'"
