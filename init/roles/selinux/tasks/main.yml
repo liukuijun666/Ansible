@@ -7,4 +7,4 @@
 - name: Config Selinux 
   lineinfile: dest=/etc/selinux/config regexp=^SELINUX=enforcing line=SELINUX=disabled
   when: sestatus.stdout == "Enforcing"
-  #notify: restart the host
+  notify: restart the host

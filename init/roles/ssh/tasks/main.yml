@@ -7,6 +7,7 @@
 - name: Turn off SSH Server GSSAPIAuthentication
   lineinfile: dest=/etc/ssh/sshd_config regexp=^GSSAPIAuthentication line="GSSAPIAuthentication no"  
   when: gssaa.stdout == "yes"
+  notify: Restart SSH Server
 
 - name: Test if the SSH Server UseDNS is turn on
   shell: grep -e "^#UseDNS" /etc/ssh/sshd_config |awk '{print $2}'
@@ -16,3 +17,4 @@
 - name: Turn off SSH Server UseDNS
   lineinfile: dest=/etc/ssh/sshd_config regexp=^#UseDNS line="UseDNS no"
   when: udns.stdout == "yes"
+  notify: Restart SSH Server

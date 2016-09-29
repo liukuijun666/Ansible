@@ -1,12 +1,14 @@
 ---
 - hosts: all
   remote_user: www
+  become: yes
+  become_method: sudo
 
   roles:
     - yum
-    - selinux
-    - iptables
-    - service
-    - security
     - ssh
     - crontab
+    - service
+    - iptables
+    - security
+    - selinux
